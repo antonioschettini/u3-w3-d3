@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 const CompanySearchResults = () => {
   const [jobs, setJobs] = useState([]);
   const params = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const baseEndpoint =
     "https://strive-benchmark.herokuapp.com/api/jobs?company=";
@@ -35,7 +35,9 @@ const CompanySearchResults = () => {
       <Row>
         <Col className="my-3">
           <h1 className="display-4">Job posting for: {params.company}</h1>
-          <Button variant="outline-primary" onClick={() => navigate("/")}>Torna alla Home</Button>
+          <Button variant="outline-primary" onClick={() => navigate("/")}>
+            Torna alla Home
+          </Button>
           {jobs.map((jobData) => (
             <Job key={jobData._id} data={jobData} />
           ))}

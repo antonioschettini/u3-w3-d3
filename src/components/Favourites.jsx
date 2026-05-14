@@ -9,6 +9,7 @@ import {
 import { Trash } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
+import { removeFromFavouriteAction } from "../redux/actions";
 
 const Favourites = () => {
   const favourites = useSelector((state) => state.favourites.list);
@@ -20,7 +21,9 @@ const Favourites = () => {
       <Row>
         <Col xs={10} className="mx-auto my-3">
           <h1 className="display-4">Aziende Preferite</h1>
-          <Button variant="outline-primary" onClick={() => navigate("/")}>Torna alla Home</Button>
+          <Button variant="outline-primary" onClick={() => navigate("/")}>
+            Torna alla Home
+          </Button>
         </Col>
         <Col xs={10} className="mx-auto">
           <ListGroup>
@@ -33,9 +36,7 @@ const Favourites = () => {
                 <Trash
                   color="red"
                   style={{ cursor: "pointer" }}
-                  onClick={() =>
-                    dispatch({ type: "REMOVE_FROM_FAVOURITE", payload: fav })
-                  }
+                  onClick={() => dispatch(removeFromFavouriteAction(fav))}
                 ></Trash>
               </ListGroupItem>
             ))}
